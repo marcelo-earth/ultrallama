@@ -1,0 +1,12 @@
+server:
+  backend: vllm
+  model: "meta-llama/Llama-3.1-8B-Instruct"
+
+matrix:
+  users: [1, 4, 8]
+  requests: [20, 40, 80]
+
+metrics:
+  - ttft_ms
+  - tokens_per_sec
+  - p95_latency_ms
