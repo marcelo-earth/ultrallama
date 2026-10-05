@@ -15,6 +15,17 @@ Benchmark and optimize LLM serving with focus on:
 - Load profile runner (single-user + concurrent)
 - Compare serving settings and summarize tradeoffs
 
+## Architecture
+
+```mermaid
+flowchart LR
+    C[configs/benchmark.yaml] --> R[scripts/run_matrix.sh]
+    R --> L[src/load_profile.py]
+    L -->|requests| V[vLLM server]
+    V -->|TTFT, tokens/s, latency| L
+    L --> A[artifacts/ CSV + charts]
+```
+
 ## Quick Start
 
 ```bash
